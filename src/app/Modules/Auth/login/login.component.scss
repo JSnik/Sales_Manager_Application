@@ -1,0 +1,36 @@
+.auth-main {
+  padding-top: 20px;
+  width: 80%;
+  margin: auto;
+  h3 {
+    font-size: 32px;
+    text-align: center;
+  }
+}
+form {
+  width: 50%;
+  flex-direction: column;
+  display: flex;
+  margin-top: 50px;
+}
+.forms {
+  display: flex;
+  justify-content: center;
+}
+input {
+  border-radius: 20px;
+  padding: 10px 0px;
+  padding-left: 15px;
+  font-size: 20px;
+  color: black;
+  box-sizing: border-box;
+}
+.input-margin {
+  margin-bottom: 15px;
+}
+@media (max-width: 600px) {
+  form {
+    width: 100%;
+    margin-top: 20px;
+  }
+}

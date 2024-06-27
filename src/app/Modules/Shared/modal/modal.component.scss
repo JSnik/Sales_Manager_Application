@@ -1,0 +1,31 @@
+.outline {
+  background: rgba(0,0,0,0.3);
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+
+  .modal {
+    width: 60%;
+    height: 60%;
+    margin: auto;
+    position: relative;
+    background: white;
+    border-radius: 10px;
+    top: 15%;
+    padding-top: 1px;
+    h3 {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .cancel {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      cursor: pointer;
+      z-index: 3;
+    }
+  }
+
+}

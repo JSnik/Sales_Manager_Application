@@ -1,0 +1,51 @@
+@import 'src/mixins';
+
+.spacer {
+  flex: 1 1 auto;
+}
+.header {
+  background: $linear-color;
+  padding: 10px;
+  img {
+    width: 150px;
+  }
+}
+
+.gapper {
+  gap: 10px;
+}
+
+.logo-small {
+  display: none;
+}
+.lang-selection {
+  svg {
+    cursor: pointer;
+    width: 31px;
+  }
+}
+@media (max-width: 600px) {
+  span {
+    font-size: 20px;
+  }
+  .logo {
+    display: none;
+  }
+  .logo-small {
+    display: block;
+  }
+  .mat-toolbar {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  button {
+    width: 18px;
+    height: 18px !important;
+    font-size: 10px;
+  }
+  .spacer {
+    flex: unset !important;
+  }
+}

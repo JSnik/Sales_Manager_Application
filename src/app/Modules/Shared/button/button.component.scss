@@ -1,0 +1,43 @@
+@import 'src/mixins';
+
+button {
+  border: 0px;
+  outline: none;
+  color: white;
+  width: 140px;
+  border-radius: 8px;
+  padding: 7px 0px;
+  font-size: 16px;
+  transition: 0.1s;
+  &:hover,&:focus {
+    transform: scale(1.02);
+    cursor: pointer;
+  }
+}
+.btn-add {
+  background: $add-color;
+}
+.btn-delete {
+  background: $delete-color
+}
+.btn-edit {
+  background: $edit-color;
+}
+.btn-header {
+  border-radius: 15px;
+  border: 1px solid $primary-color;
+  color: $primary-color;
+}
+.btn-login {
+  border-radius: 20px;
+  background: $linear-color;
+  width: 100%;
+  padding: 12px 0px;
+  &:hover, &:focus {
+    transform: scale(1.005);
+  }
+  &:disabled {
+    background: gray;
+    cursor: unset;
+  }
+}
