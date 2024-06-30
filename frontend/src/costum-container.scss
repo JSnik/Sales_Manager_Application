@@ -1,0 +1,48 @@
+/* Bootstrap Overrides and Custom Styles */
+.custom-container {
+  max-width: 1140px; /* You can adjust this to your needs */
+  padding: 2px;
+  margin: 0 auto;
+  background-color: #f8f9fa; /* Light grey background */
+  border-radius: 5px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Typography */
+.custom-container h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #343a40; /* Dark grey */
+}
+
+.custom-container p {
+  font-size: 1.25rem;
+  color: #6c757d; /* Medium grey */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1200px) {
+  .custom-container {
+    max-width: 960px;
+  }
+}
+
+@media (max-width: 992px) {
+  .custom-container {
+    max-width: 720px;
+  }
+}
+
+@media (max-width: 768px) {
+  .custom-container {
+    max-width: 540px;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 576px) {
+  .custom-container {
+    max-width: 100%;
+    padding: 5px;
+  }
+}

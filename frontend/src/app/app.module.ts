@@ -9,6 +9,7 @@ import {SharedModule} from "./Modules/Shared/shared.module";
 import {AuthInterceptor} from "./Interceptors/login.interceptor";
 import {HTTP_INTERCEPTORS} from "@angular/common/http";
 import {AuthGuard} from "./Guards/auth.guard";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import {AuthGuard} from "./Guards/auth.guard";
     ProductsModule,
     SalesManagersModule,
     SharedModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     AuthGuard,

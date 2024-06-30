@@ -52,7 +52,8 @@ export class LoginComponent implements OnInit, OnDestroy{
     (resp: LoginModel) => {
           console.log(resp);
           this.loginNotSuccess = false;
-          this.saveToken(resp.token);
+          this.saveInSession('token', resp.token);
+          this.saveInSession('id', resp.user._id);
           this.retirectAfterSuccessLogin();
           this.cdr.markForCheck();
         },
@@ -67,8 +68,8 @@ export class LoginComponent implements OnInit, OnDestroy{
     this.router.navigate(['./products'])
   }
 
-  saveToken(token: string) {
-    sessionStorage.setItem('token', token)
+  saveInSession(name: string, val: string) {
+    sessionStorage.setItem(name, val)
   }
 
   ngOnDestroy() {
