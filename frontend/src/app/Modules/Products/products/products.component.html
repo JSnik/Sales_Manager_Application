@@ -2,35 +2,47 @@
   <header>
     <h3>Products Page</h3>
   </header>
+  <div class="custom-container custom-container-dark margin-b-25">
+    <app-toolbar (searchEmitter)="getSearchedProduct($event)">
+      <app-button [btnValue]="'Add'" [className]="'btn-add'" (click)="isAddModal = true"></app-button>
+      <app-button [btnValue]="'Delete'" [className]="'btn-delete'" (click)="deleteProduct()" *ngIf="clickedRowIndex !== -1"></app-button>
+      <app-button [btnValue]="'Edit'" [className]="'btn-edit'" *ngIf="clickedRowIndex !== -1" (click)="isEditModal = true"></app-button>
+      <app-button [btnValue]="'Sell'" [className]="'btn-sell'" *ngIf="clickedRowIndex !== -1" (click)="isSellModal = true"></app-button>
+    </app-toolbar>
+  </div>
   <div class="custom-container">
     <div class="example-container mat-elevation-z8">
-      <mat-table #table [dataSource]="productsData">
+      <mat-table #table [dataSource]="dataSource">
         <!-- Position Column -->
         <ng-container matColumnDef="position">
           <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+          <mat-cell *matCellDef="let element; let i = index"> {{i+1}} </mat-cell>
         </ng-container>
 
         <!-- Name Column -->
         <ng-container matColumnDef="name">
           <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+          <mat-cell *matCellDef="let element"> {{element?.title?.en}} </mat-cell>
         </ng-container>
 
         <!-- Weight Column -->
-        <ng-container matColumnDef="weight">
-          <mat-header-cell *matHeaderCellDef> Weight </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
+        <ng-container matColumnDef="price">
+          <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element?.price}} </mat-cell>
         </ng-container>
 
         <!-- Symbol Column -->
-        <ng-container matColumnDef="symbol">
-          <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+        <ng-container matColumnDef="amount">
+          <mat-header-cell *matHeaderCellDef> Amount </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.amount}}.00 - {{element.totalAmount}}.00 დან</mat-cell>
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns; let i = index;"
+                 (click)="getRow(row, i)"
+                 [class.demo-row-is-clicked]="i === clickedRowIndex"
+                 class="c-pointer"
+        ></mat-row>
       </mat-table>
       <mat-paginator #paginator
                      [pageSize]="10"
@@ -39,3 +51,27 @@
     </div>
   </div>
 </div>
+<app-modal (closeModal)="closeModal()" *ngIf="isAddModal" [title]="'Add Product'">
+  <form [formGroup]="addForm" class="modal-wrapper">
+    <input type="text" class="input-custom input-in-modal" placeholder="Product Name" formControlName="name">
+    <span *ngIf="addForm.get('name')?.invalid && addForm.get('name')?.touched" class="incorrect">Only English letters are allowed.</span>
+    <input type="number" class="input-custom input-in-modal" placeholder="Price" formControlName="price">
+    <input type="number" class="input-custom input-in-modal" placeholder="Amount" formControlName="amount">
+    <app-button [btnValue]="'Add Product'" [className]="'btn-extra'" (click)="addProducts()" [isDisabled]="true" [disabledPromise]="addForm.invalid"></app-button>
+  </form>
+</app-modal>
+<app-modal (closeModal)="closeModal()" *ngIf="isEditModal" [title]="'Edit Product'">
+  <form [formGroup]="editForm" class="modal-wrapper">
+    <input type="text" class="input-custom input-in-modal" placeholder="Product Name" formControlName="name" [(ngModel)]="chosenProduct.title.en">
+    <span *ngIf="editForm.get('name')?.invalid && editForm.get('name')?.touched" class="incorrect">Only English letters are allowed.</span>
+    <input type="number" class="input-custom input-in-modal" placeholder="Price" formControlName="price" [(ngModel)]="chosenProduct.price">
+    <input type="number" class="input-custom input-in-modal" placeholder="Amount" formControlName="amount" [(ngModel)]="chosenProduct.amount">
+    <app-button [btnValue]="'Edit Product'" [className]="'btn-extra'" (click)="editProducts()" [isDisabled]="true" [disabledPromise]="editForm.invalid"></app-button>
+  </form>
+</app-modal>
+<app-modal (closeModal)="closeModal()" *ngIf="isSellModal" [title]="'Sell Product'">
+    <form [formGroup]="sellForm" class="modal-wrapper">
+      <input type="number" class="input-custom input-in-modal" placeholder="Amount" formControlName="amount">
+      <app-button [btnValue]="'Sell Product'" [className]="'btn-extra'" (click)="sellProducts()" [isDisabled]="true" [disabledPromise]="sellForm.get('amount')?.value > chosenProduct.amount"></app-button>
+    </form>
+</app-modal>

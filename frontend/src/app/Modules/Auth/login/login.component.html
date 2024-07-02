@@ -5,12 +5,12 @@
   <div class="forms">
     <form [formGroup]="loginForm" (submit)="submit()">
       <div class="label input-margin">
-        <input formControlName="email" required placeholder="Email@gmail.com">
+        <input formControlName="user" required placeholder="Username" class="input-custom">
       </div>
       <div class="label input-margin">
-        <input formControlName="password" type="password" required placeholder="Password">
+        <input formControlName="password" type="password" required placeholder="Password" class="input-custom">
       </div>
-      <span class="incorrect" *ngIf="loginNotSuccess">Email or Password is incorrect!</span>
+      <span class="incorrect" *ngIf="loginNotSuccess">Username or Password is incorrect!</span>
       <app-button [className]="'btn-login'" [btnValue]="'Log In'" [isDisabled]="true" [disabledPromise]="loginForm.invalid"></app-button>
     </form>
   </div>

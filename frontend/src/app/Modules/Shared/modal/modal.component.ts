@@ -16,13 +16,16 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
             </g>
           </svg>
         </div>
+        <div class="content">
+          <ng-content></ng-content>
+        </div>
       </div>
     </div>
   `,
   styleUrls: ['./modal.component.scss']
 })
 export class ModalComponent {
-  @Input() title: string = 'add user';
+  @Input() title: string = '';
   @Output() closeModal: EventEmitter<boolean> = new EventEmitter<boolean>()
 
   closeModalFunc() {

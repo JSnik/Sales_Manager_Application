@@ -7,6 +7,6 @@ export interface LoginModel {
 }
 
 export interface LoginModelParams {
-  email: string,
+  username: string,
   password: string,
 }

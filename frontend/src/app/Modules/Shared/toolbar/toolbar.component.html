@@ -1,0 +1,12 @@
+<div class="toolbar">
+  <div class="section">
+    <div class="input">
+      <form [formGroup]="input">
+        <input type="text" class="input-custom" placeholder="Search" formControlName="search">
+      </form>
+    </div>
+    <div class="action-buttons">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

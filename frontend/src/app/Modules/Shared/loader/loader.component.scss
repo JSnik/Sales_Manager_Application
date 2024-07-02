@@ -1,0 +1,17 @@
+.loader-content {
+  height: 100vh;
+  width: 100%;
+  background: rgba(0,0,0,0.4);
+  position: fixed;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+  .spinner {
+    position: absolute;
+    z-index: 999;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}

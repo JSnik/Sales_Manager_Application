@@ -1,11 +1,18 @@
 export interface ProductsModel {
   status: string,
   result: number,
-  data: [];
+  data: productModel[];
 }
-interface productModel {
-  title: string,
+export interface productModel {
+  title: titleObj,
   _id: string,
   price: number,
-  totalAmount: number
+  totalAmount: number,
+  amount: number,
+  createdAt: string,
+  soldDate: string
+}
+interface titleObj {
+  en: string,
+  ka: string
 }

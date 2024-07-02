@@ -1,1 +1,53 @@
-<p>sold-products works!</p>
+<div class="products-main">
+  <header class="page-title">
+    <h3>Sold Products Page</h3>
+  </header>
+  <div class="custom-container custom-container-dark margin-b-25">
+    <app-toolbar (searchEmitter)="getSearchedProduct($event)">
+      <app-button [btnValue]="'All Sales'" [className]="!mySalesShown ? 'btn-add' : 'btn-header'" (click)="allSales()"></app-button>
+      <app-button [btnValue]="'My Sales'" [className]="mySalesShown ? 'btn-add' : 'btn-header'" (click)="mySales()"></app-button>
+    </app-toolbar>
+  </div>
+  <div class="custom-container">
+    <div class="example-container mat-elevation-z8">
+      <mat-table #table [dataSource]="dataSource">
+        <!-- Position Column -->
+        <ng-container matColumnDef="position">
+          <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+          <mat-cell *matCellDef="let element; let i = index"> {{i+1}} </mat-cell>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef> Product Name </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element?.product?.title?.en}} </mat-cell>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="price">
+          <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element?.product?.price}} </mat-cell>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="amount">
+          <mat-header-cell *matHeaderCellDef> Amount </mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element?.amount}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="soldAt">
+          <mat-header-cell *matHeaderCellDef> Sold Date </mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element?.createdAt |  date:'dd/MM/yyyy HH:mm'}}</mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns; let i = index;"
+        ></mat-row>
+      </mat-table>
+      <mat-paginator #paginator
+                     [pageSize]="10"
+                     [pageSizeOptions]="[5, 10, 20]">
+      </mat-paginator>
+    </div>
+  </div>
+</div>

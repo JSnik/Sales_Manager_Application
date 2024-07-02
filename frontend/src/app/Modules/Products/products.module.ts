@@ -5,6 +5,8 @@ import {ProductsComponent} from "./products/products.component";
 import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {HttpClientModule} from "@angular/common/http";
+import {SharedModule} from "../Shared/shared.module";
+import {ReactiveFormsModule} from "@angular/forms";
 
 const routes: Routes = [
   { path: '',  component: ProductsComponent }
@@ -18,6 +20,8 @@ const routes: Routes = [
     HttpClientModule,
     MatTableModule,
     MatPaginatorModule,
+    SharedModule,
+    ReactiveFormsModule,
   ]
 })
 export class ProductsModule { }

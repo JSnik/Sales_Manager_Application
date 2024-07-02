@@ -10,7 +10,6 @@ import {Component, Input} from '@angular/core';
 export class ButtonComponent {
   @Input() btnValue: string = '';
   @Input() className: string = '';
-
   @Input() isDisabled: boolean = false;
   @Input() disabledPromise: any = '';
 }

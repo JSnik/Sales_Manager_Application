@@ -15,13 +15,16 @@ button {
   }
 }
 .btn-add {
-  background: $add-color;
+  background: $activeRow-color;
 }
 .btn-delete {
   background: $delete-color
 }
 .btn-edit {
   background: $edit-color;
+}
+.btn-sell {
+  background: $add-color;
 }
 .btn-header {
   border-radius: 15px;
@@ -33,11 +36,21 @@ button {
   background: $linear-color;
   width: 100%;
   padding: 12px 0px;
-  &:hover, &:focus {
-    transform: scale(1.005);
-  }
+}
+
+button {
   &:disabled {
     background: gray;
     cursor: unset;
   }
+  &:hover, &:focus {
+    transform: scale(1.005);
+  }
+}
+
+.btn-extra {
+  height: 50px;
+  width: 100%;
+  border-radius: 20px;
+  background: $activeRow-color;
 }

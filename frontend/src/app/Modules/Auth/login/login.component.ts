@@ -13,17 +13,15 @@ import {LoginModel, LoginModelParams} from "../../../Models/login.model";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoginComponent implements OnInit, OnDestroy{
-  // @ts-ignore
-  public loginForm: FormGroup;
+  public loginForm!: FormGroup;
   private destroy$: Subject<boolean> = new Subject<boolean>();
   public loginNotSuccess: boolean = false;
-  private emailRegx = /^(([^<>+()\[\]\\.,;:\s@"-#$%&=]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,3}))$/;
 
   constructor(private fb: FormBuilder, private router: Router, private _loginService: LoginService, private cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
     this.loginForm = this.fb.group({
-      email: [null, [Validators.required,]],
+      user: [null, [Validators.required,]],
       password: [null, Validators.required]
     })
 
@@ -40,9 +38,9 @@ export class LoginComponent implements OnInit, OnDestroy{
   }
 
   submit() {
-    const email = this.loginForm.value.email;
+    const user = this.loginForm.value.user;
     const password = this.loginForm.value.password;
-    this.login({email: email, password: password});
+    this.login({username: user, password: password});
   }
 
   login(user: LoginModelParams): void {
