@@ -7,13 +7,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  isGeoLang: boolean = true;
-
   constructor(private router: Router) {}
-
-  changeLang() {
-    this.isGeoLang = !this.isGeoLang;
-  }
 
   logOut() {
     sessionStorage.removeItem('token');
