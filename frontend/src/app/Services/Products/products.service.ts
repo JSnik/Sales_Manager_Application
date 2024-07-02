@@ -4,9 +4,8 @@ import {Observable} from "rxjs";
 import {baseUrl} from "../../../../environment/env.prod";
 import {productModel, ProductsModel} from "../../Models/products.model";
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
+
 export class ProductsService {
   private url = `${baseUrl}product`
   constructor(private _http: HttpClient) { }

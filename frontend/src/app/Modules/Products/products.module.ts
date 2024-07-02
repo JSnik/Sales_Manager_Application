@@ -7,6 +7,7 @@ import {MatPaginatorModule} from "@angular/material/paginator";
 import {HttpClientModule} from "@angular/common/http";
 import {SharedModule} from "../Shared/shared.module";
 import {ReactiveFormsModule} from "@angular/forms";
+import {ProductsService} from "../../Services/Products/products.service";
 
 const routes: Routes = [
   { path: '',  component: ProductsComponent }
@@ -22,6 +23,9 @@ const routes: Routes = [
     MatPaginatorModule,
     SharedModule,
     ReactiveFormsModule,
+  ],
+  providers: [
+    ProductsService
   ]
 })
 export class ProductsModule { }

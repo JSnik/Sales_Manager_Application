@@ -6,6 +6,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatTableModule} from "@angular/material/table";
 import {SharedModule} from "../Shared/shared.module";
+import {SoldProductsService} from "../../Services/SoldProducts/sold-products.service";
 
 const routes = [
   { path: '', component: SoldProductsComponent },
@@ -13,14 +14,17 @@ const routes = [
 
 @NgModule({
   declarations: [SoldProductsComponent],
-    imports: [
-        CommonModule,
-        RouterModule.forChild(routes),
-        FormsModule,
-        MatPaginatorModule,
-        MatTableModule,
-        ReactiveFormsModule,
-        SharedModule
-    ]
+  imports: [
+      CommonModule,
+      RouterModule.forChild(routes),
+      FormsModule,
+      MatPaginatorModule,
+      MatTableModule,
+      ReactiveFormsModule,
+      SharedModule
+  ],
+  providers: [
+    SoldProductsService
+  ]
 })
 export class SoldProductsModule { }

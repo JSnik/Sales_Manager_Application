@@ -4,9 +4,8 @@ import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {ProductsModel} from "../../Models/products.model";
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
+
 export class SoldProductsService {
   private url: string = `${baseUrl}soldProduct`;
   constructor(private _http: HttpClient) { }

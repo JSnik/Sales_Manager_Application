@@ -7,7 +7,7 @@ const routes: Routes = [
   { path: 'products', loadChildren: () => import('./Modules/Products/products.module').then(m => m.ProductsModule), canActivate: [AuthGuard] },
   { path: 'sales-managers', loadChildren: () => import('./Modules/Sales-Managers/sales-managers.module').then(m => m.SalesManagersModule), canActivate: [AuthGuard] },
   { path: 'sold-products', loadChildren: () => import('./Modules/Sold-products/sold-products.module').then(m => m.SoldProductsModule), canActivate: [AuthGuard] },
-  { path: '', redirectTo: 'login', pathMatch: 'full' }
+  { path: '', redirectTo: 'products', pathMatch: 'full' }
 ];
 
 @NgModule({

@@ -4,9 +4,8 @@ import {baseUrl} from "../../../../environment/env.prod";
 import {Observable} from "rxjs";
 import {SalesManagersBaseModel} from "../../Models/sales-managers.model";
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
+
 export class SalesManagersService {
   private url: string = baseUrl;
   constructor(private _http: HttpClient) { }
